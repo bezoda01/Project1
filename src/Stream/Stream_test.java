@@ -9,8 +9,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Stream_test {
+    public static Path getPath() {
+        return path;
+    }
+
+    public static void setPath(Path path) {
+        Stream_test.path = path;
+    }
+
+    private static Path path;
+
     public static final String str = "/Users/zenapoznak/Desktop/First2.rtf";
-    public static final String NULL_SPACE = "/Users/zenapoznak/Desktop/First2.txt";
+    public static final String NULL_SPACE = "/Users/zenapoznak/Desktop/newdirectory/";
 
     public void setDirectory(String directory) {
         this.directory = directory;
@@ -25,10 +35,11 @@ public class Stream_test {
     public static void main (String[] args) throws IOException {
         Stream_test stream_test = new Stream_test();
        //stream(NULL_SPACE);
-        stream_test.streamInFiles();//основна для записи консольного текста в файл
+        //stream_test.streamInFiles();//основна для записи консольного текста в файл
         //streamInFile();
         //stream2(NULL_SPACE);//чтение файла и вывод его в консоль
-        readFileSimple(stream_test.getDirectory());//чтение из файла и вывод его в консоль
+        stream_test.createNewFile();
+        //readFileSimple(getPath());//чтение из файла и вывод его в консоль
     }
 
     public static void stream(String str) throws IOException {
@@ -86,8 +97,21 @@ public class Stream_test {
         }
     }
 
-    public static void readFileSimple(String strs) throws IOException{
-            List<String> lines = Files.readAllLines(Paths.get(strs));
+    public void createNewFile() throws IOException
+    {
+        try(InputStream st = System.in;
+        InputStreamReader stream = new InputStreamReader(st);
+        BufferedReader bf = new BufferedReader(stream))
+        {
+            Path files = Path.of(bf.readLine() + bf.readLine() + ".txt");
+            Path file = Files.createFile(files);
+            setPath(file);
+        }
+
+    }
+
+    public static void readFileSimple(Path strs) throws IOException{
+            List<String> lines = Files.readAllLines(strs);
             for(String str : lines){
                 System.out.print(str);
             }
