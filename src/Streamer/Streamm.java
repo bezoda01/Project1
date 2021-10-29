@@ -1,11 +1,11 @@
-package Stream;
+package Streamer;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class Stream {
+public class Streamm {
     public static void main(String[] args) throws IOException,FileNotFoundException{
 
 

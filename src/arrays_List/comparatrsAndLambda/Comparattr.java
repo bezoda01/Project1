@@ -1,13 +1,8 @@
-package arrays_List.comparatrs;
+package arrays_List.comparatrsAndLambda;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Objects;
 
 public class Comparattr
 {
@@ -51,6 +46,25 @@ public class Comparattr
             return ob1.length() - ob2.length();
         }
     );
+
+        System.out.println();
+        System.out.println("После обратной сортировки: ");
+
+        for(String write : list)
+        {
+            System.out.print(write + " ");
+        }
+
+        //самый короткий способ записать лямбда выражение -
+        Collections.sort(list, (String o1, String o2) -> o2.length() - o1.length());
+        //значения выражения - если длинну первого слова отнять от второго будет меньше нуля то первое  слово меньше второго и переставит его вместо второго
+        System.out.println();
+        System.out.println("После обратной сортировки: ");
+
+        for(String write : list)
+        {
+            System.out.print(write + " ");
+        }
 
     }
 }

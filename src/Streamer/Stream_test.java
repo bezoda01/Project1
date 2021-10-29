@@ -1,4 +1,4 @@
-package Stream;
+package Streamer;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;

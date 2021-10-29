@@ -23,6 +23,6 @@ public class Class_and_Konstruktor {//это мы создали класс.
         Class_and_Konstruktor class_and_konstruktor = new Class_and_Konstruktor("Bob", 21);
         //это мы создали объект нашего класса который вызовет наш конструктор с определенными параметрами.
         Class_and_Konstruktor class_and_konstruktor1 = new Class_and_Konstruktor();
-        //создали второй обьект нашего класса без вводимых параметров, каждый новый обьект класса должен иметь разное имя.
+        //создали второй объект нашего класса без вводимых параметров, каждый новый объект класса должен иметь разное имя.
     }
 }

@@ -1,4 +1,4 @@
-package arrays_List.comparatrs;
+package arrays_List.comparatrsAndLambda;
 
 import java.util.Comparator;
 

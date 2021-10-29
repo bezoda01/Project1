@@ -1,4 +1,4 @@
-package Stream;
+package Streamer;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
