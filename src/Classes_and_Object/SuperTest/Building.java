@@ -70,7 +70,7 @@ class Age extends Name {
 }
 
 class Worker extends Age {
-    final String FILE = "/Users/zenapoznak/Desktop/Worker";
+    static final String FILE = "/Users/zenapoznak/Desktop/Worker";
 
     public String getJob() {
         return job;
@@ -94,6 +94,7 @@ class Worker extends Age {
 
     }
 
+
     Worker(Worker w) throws IOException {
         super(w);
         job = w.job;
@@ -112,17 +113,66 @@ class Worker extends Age {
         }
     }
 
-    public void getInfoFiles() {
+    public static void getInfoFiles() {
         File list = new File(FILE);
         System.out.println("Список созданных файлов:" + "\n" + Arrays.toString(list.list()));
     }
 
+    public static void getFiles() throws IOException {
+        String name;
+        System.out.println("Введите имя файла который хотите прочитать.");
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            name = scanner.nextLine();
+            File file = new File(FILE + "/" + name + ".txt");
+            if (file.isFile()) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                    System.out.println("Прочитано из файла");
+                    while (reader.ready()) {
+                        String line = reader.readLine();
+                        System.out.println(line);
+                    }
+                    break;
+                }
+            } else {
+                System.out.println("Введите имя существующего файла. (имя работника)");
+            }
+        }
+    }
+
+    public static void runProgramm() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        label:
+        while (true) {
+            System.out.println("Введите что хотите сделать. (число)");
+            System.out.println("""
+                    1.Вывести в консоль список файлов о ваших работниках.
+                    2.Выбрать файл который вы хотите прочитать.
+                    3.Создать файл работника.
+                    4.Закрыть программу.""");
+            String number = scanner.nextLine();
+            switch (number) {
+                case "1":
+                    getInfoFiles();
+                    break;
+                case "2":
+                    getFiles();
+                    break;
+                case "3":
+                    Worker worker = new Worker();
+                case "4":
+                    System.out.println("Программа закрыта.");
+                    break label;
+                default:
+                    System.out.println("Введите корректную цифру!");
+                    break;
+            }
+        }
+    }
 
 
     public static void main(String[] args) throws IOException {
-        Worker worker = new Worker();
-        worker.leftUntilRetirement();
-        worker.getInfoFiles();
+        runProgramm();
     }
 }
 //Пример вывода в консоль
